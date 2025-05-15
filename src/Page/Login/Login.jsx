@@ -7,6 +7,7 @@ import Swal from 'sweetalert2';
 const Login = () => {
   const { signInUser } = useContext(AuthContext);
   const navigate = useNavigate();
+  const from = location.state?.from?.pathname || "/";
 
   const handleLogin = (event) => {
     event.preventDefault();
@@ -33,7 +34,7 @@ const Login = () => {
         });
 
         // Optional: redirect after login
-        navigate('/');
+       navigate(from, { replace: true });
       })
       .catch((error) => {
         console.error(error);
